@@ -1,0 +1,9 @@
+.row
+  .col-sm-offset-5.col-sm-2.text-center
+    input#attachmentInput(type='file' name='attachment' style='display: none;' multiple)     
+    button.btn.btn-primary.center-block#btnBrowse Sfoglia
+div#attachmentsList
+script.
+  $('#btnBrowse').click(function() {
+    $('#attachmentInput').click();
+  });

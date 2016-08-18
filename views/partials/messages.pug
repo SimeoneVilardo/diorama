@@ -1,0 +1,21 @@
+each message in messages
+    if(message.senderId.toString() == myId.toString())
+        .answer.right
+            .avatar
+                img(src=picture_path+message.senderId )
+            .name #{message.senderName}
+            .text #{message.body}
+                if(message.attachments)
+                    each attachment in message.attachments
+                        a.btn.btn-info.btn-attachment(href='/api/messages/download-attachment?attachId='+attachment._id) #{attachment.originalFileName}
+            .time #{message.date.toLocaleString()}
+    else    
+        .answer.left
+            .avatar
+                img(src=picture_path+message.senderId )
+            .name #{message.senderName}
+            .text #{message.body}
+                if(message.attachments)
+                    each attachment in message.attachments
+                        a.btn.btn-primary.btn-attachment(href='/api/messages/download-attachment?attachId='+attachment._id) #{attachment.originalFileName}
+            .time #{message.date.toLocaleString()}

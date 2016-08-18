@@ -1,0 +1,11 @@
+tr(id='tr-' + pendingUser.userId)
+    td
+        img.img-responsive.img-circle.img-pendingUser(src='images/defaults/unknown_user.png' style="height:40px; width:40px;")
+    td= pendingUser.username
+    td #{pendingUser.creationDate.toLocaleString()}
+    td
+        button.btn.btn-warning.btn-remove-pending-user(value=pendingUser.userId.toString()) Rimuovi
+    td
+        button.btn.btn-danger.btn-block-pending-user(value=pendingUser.userId.toString()) Blocca
+    td    
+        button.btn.btn-success.btn-accept-pending-user(value=pendingUser.userId.toString()) Accetta

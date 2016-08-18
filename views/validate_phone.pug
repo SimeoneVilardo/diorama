@@ -1,0 +1,36 @@
+extends layout
+
+block content
+    .top-content
+      .inner-bg
+        .container
+          .row
+            .col-sm-8.col-sm-offset-2.text
+              h1
+                strong Convalida account
+              .description
+                p
+                  | Convalida il tuo account con il codice ricevuto via SMS.
+          .row
+            .col-sm-6.form-box   
+              img#imgLogo(src='images/logo.png')
+            .col-sm-5.form-box.animated.flipInX
+              .form-top
+                .form-top-left
+                  h3 Creazione account
+                  p Inserisci dati per creare il tuo account:
+                .form-top-right
+                  i.fa.fa-pencil
+              .form-bottom
+                .validation-form#validation-form
+                  .form-group
+                    label.sr-only(for='form-code') Codice
+                    .input-group
+                      input#form-code.form-password.form-control(type='number' name='form-code' placeholder='Codice')
+                      span.input-group-btn
+                        button.btn.btn-diorama.btn-link-2#btnHelpPhoneValidation(tabindex='-1' style='margin:0px;')
+                          i.fa.fa-question-circle-o
+                  button.btn.btn-diorama.btn-primary#btnValidate Convalida
+      link(rel='stylesheet' href='stylesheets/login.css')
+      script(src='javascripts/validate_phone.js' + '?_=' + new Date().getTime())    
+      //script(src='javascripts/validate_phone.js')            

@@ -1,0 +1,49 @@
+extends layout
+
+block content
+    .top-content
+      .inner-bg
+        .container
+          .row
+            .col-sm-8.col-sm-offset-2.text
+              h1
+                strong Registrati al sito
+              .description
+                p
+                  | La registrazione al sito è semplice e veloce. Prova ora!
+          .row
+            .col-sm-6.form-box   
+              img#imgLogo(src='images/logo.png')
+            .col-sm-5.form-box.animated.flipInX
+              .form-top
+                .form-top-left
+                  h3 Creazione account
+                  p Inserisci dati per creare il tuo account:
+                .form-top-right
+                  i.fa.fa-pencil
+              .form-bottom
+                .registration-form#registration-form
+                  .form-group
+                    label.sr-only(for='form-email') Email
+                    input#form-email.form-email.form-control(type='email' name='form-email' placeholder='Email')
+                  .form-group
+                    label.sr-only(for='form-phone') Cellulare
+                    input#form-phone.form-phone.form-control(type='number' name='form-phone' placeholder='Cellulare (opzionale)')  
+                  .form-group
+                    label.sr-only(for='form-username') Username
+                    input#form-username.form-username.form-control(type='text' name='form-username' placeholder='Username')
+                  .form-group
+                    label.sr-only(for='form-password') Password
+                    input#form-password.form-password.form-control(type='password' name='form-password' placeholder='Password')
+                  .form-group
+                    label.sr-only(for='form-confirm-password') Conferma Password
+                    input#form-confirm-password.form-confirm-password.form-control(type='password' name='form-confirm-password' placeholder='Conferma password')
+                  .form-group
+                    label.lbl-convalida(for='form-convalida') Tipo Comunicazioni:
+                    input#form-convalida.form-convalida(type='checkbox' data-toggle='toggle' data-off="<i class='fa fa-envelope'></i> Email" data-on="<i class='fa fa-phone'></i> Cellulare" data-onstyle='info' data-offstyle='success')
+                  button.btn.btn-diorama.btn-primary#btnSignup Registrati
+      link(rel='stylesheet' href='https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css')
+      link(rel='stylesheet' href='stylesheets/login.css')            
+      script(src='https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js')             
+      script(src='javascripts/signup.js' + '?_=' + new Date().getTime())            
+      //script(src='javascripts/signup.js')            

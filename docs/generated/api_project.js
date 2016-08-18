@@ -1,0 +1,13 @@
+define({
+  "name": "Diorama",
+  "version": "1.0.0",
+  "description": "Documentazione per sviluppatori",
+  "apidoc": "0.2.0",
+  "sampleUrl": false,
+  "generator": {
+    "name": "apidoc",
+    "time": "2016-06-19T12:48:21.346Z",
+    "url": "http://apidocjs.com",
+    "version": "0.15.1"
+  }
+});

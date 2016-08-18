@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  .top-content
+    .inner-bg
+      .container
+        .row
+          .col-sm-8.col-sm-offset-2.text
+            h1
+              strong= error.message
+            .description
+              h1= error.status
+  link(rel='stylesheet' href='/stylesheets/error.css')
+                  

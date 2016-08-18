@@ -1,0 +1,9 @@
+tr(id='tr-' + contact.userId)
+    td
+        img.img-responsive.img-circle.img-contact(src=picture_path + contact.userId alt="Immagine di profilo" style="height:40px; width:40px;")
+    td= contact.username
+    td #{contact.creationDate.toLocaleString()}
+    td
+        button.btn.btn-warning.btn-remove-contact(value=contact.userId.toString()) Rimuovi
+    td
+        button.btn.btn-danger.btn-block-contact(value=contact.userId.toString()) Blocca

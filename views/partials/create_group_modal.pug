@@ -1,0 +1,25 @@
+.form-group
+    label.col-md-2.control-label(for='txtGroupName') Nome gruppo
+    .col-md-6
+        input.form-control#txtGroupName(type='text' name='txtGroupName' style='max-width: 250px;')
+table.table.table-diorama-striped
+    thead
+        tr
+            th Foto
+            th Username
+            th &nbsp;
+            th &nbsp;
+    tbody
+        each contact in contacts
+            tr(id='tr-create-group-contact-' + contact.userId)
+                td
+                    img.img-responsive.img-circle.img-contact(src=picture_path + contact.userId style="height:40px; width:40px;")
+                td= contact.username
+                td
+                    input.add-contact-to-group(type='checkbox' value=contact.userId.toString() name=contact.username data-width="120" data-toggle='toggle' data-on="<i class='fa fa-plus'></i> Aggiungi" data-off="<i class='fa fa-remove'></i> Ignora" data-onstyle="info")
+                td
+                    input(type='checkbox' id='set-admin-'+contact.userId data-width="120" data-toggle='toggle' data-on="<i class='fa fa-user-plus'></i> Admin" data-off="<i class='fa fa-user'></i> User" data-onstyle="warning")
+script.
+    $(function() {
+        $('input[type="checkbox"]').bootstrapToggle();
+    });                    

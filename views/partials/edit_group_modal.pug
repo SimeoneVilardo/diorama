@@ -1,0 +1,31 @@
+.form-group
+    label.col-md-2.control-label(for='txtGroupName') Nome gruppo
+    .col-md-6
+        input.form-control#txtGroupName(type='text' name='txtGroupName' value=groupName style='max-width: 250px;' readonly)
+table.table.table-diorama-striped
+    thead
+        tr
+            th.black-text Foto
+            th.black-text Username
+            th &nbsp;
+            th &nbsp;
+    tbody
+        each user in users
+            tr(id='tr-create-group-user-' + user.userId)
+                td
+                    img.img-responsive.img-circle.img-contact(src=picture_path + user.userId style="height:40px; width:40px;")
+                td.black-text= user.username
+                td
+                    if(!user.groupUser)
+                        input.add-user-to-group(type='checkbox' value=user.userId.toString() name=user.username data-width="120" data-toggle='toggle' data-on="<i class='fa fa-plus'></i> Aggiungi" data-off="<i class='fa fa-remove'></i> Ignora" data-onstyle="info")
+                    else
+                        input.remove-user-from-group(type='checkbox' value=user.userId.toString() name=user.username data-width="120" data-toggle='toggle' data-on="<i class='fa fa-minus'></i> Rimuovi" data-off="<i class='fa fa-remove'></i> Ignora")
+                td
+                    input(type='checkbox' id='set-admin-'+user.userId checked=user.admin data-width="120" data-toggle='toggle' data-on="<i class='fa fa-user-plus'></i> Admin" data-off="<i class='fa fa-user'></i> User" data-onstyle="warning")
+img.img-responsive#imgGroupPicture(src=picture_path + groupId height="80" width="80")                        
+input(type='file' id='groupPictureInput' name='groupImage' accept='image/*' style='display: none;')     
+button.btn.btn-primary#btnUploadGroupImage(value=groupId.toString()) Upload                    
+script.
+    $(function() {
+        $('input[type="checkbox"]').bootstrapToggle();
+    });

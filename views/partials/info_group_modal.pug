@@ -1,0 +1,16 @@
+table.table.table-diorama-striped
+    thead
+        tr
+            th.black-text Foto
+            th.black-text Username
+            th.black-text Permessi
+    tbody
+        each user in users
+            tr(id='tr-create-group-user-' + user.userId)
+                td
+                    img.img-responsive.img-circle.img-contact(src=picture_path + user.userId style="height:40px; width:40px;")
+                td.black-text= user.username
+                if(user.admin)
+                    td.black-text Admin
+                else
+                    td.black-text Utente

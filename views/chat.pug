@@ -1,0 +1,93 @@
+extends layout
+
+block content
+  .content.container-fluid.bootstrap.snippets
+    .row.row-broken
+      .col-sm-3.col-xs-12(style="background-color: rgba(0,0,0,0);")
+        .col-inside-lg.decor-default.chat.collapse.in#panelUsersParent(style='overflow-y: scroll; outline: none; background-color: rgba(255,255,255,0.5);' tabindex='5000')
+          h4 
+            a(href='#users' aria-controls='home' role='tab' data-toggle='tab') Contatti
+            span(style="padding-right: 5px; padding-left: 5px;")
+            a(href='#groups' aria-controls='home' role='tab' data-toggle='tab') Gruppi
+            span(style="padding-right: 5px; padding-left: 5px;")
+            a(href='#search' aria-controls='home' role='tab' data-toggle='tab') Cerca 
+            // span.actions
+            //   i.fa.fa-arrow-down(data-toggle="collapse" data-target="#panelUsersParent" style="margin-left: 15px; cursor: pointer;") 
+          .chat-users
+            .tab-content
+              .contacts.tab-pane.active#users(role="users")
+              
+                each contact in user.contacts
+                  .user.contact(id='user-' + contact.userId value=contact.userId.toString() name=contact.username)
+                    .avatar
+                      img(src=picture_path+contact.userId)
+                      if contact.online
+                        .status.online
+                      else  
+                        .status.offline
+                    .name #{contact.username}
+                    if contact.online
+                      .mood Online
+                    else
+                      .mood Offline
+                    
+                each pendingUser in user.pendingUsers
+                  .container-pending-user(id='pending-user-' + pendingUser.userId style="display: table;")
+                    .user.pending-user(id='user-' + pendingUser.userId name=pendingUser.username value=pendingUser.userId.toString() style="display: table-cell;")
+                      .avatar
+                        img(src='images/defaults/unknown_user.png')
+                      label #{pendingUser.username}
+                    .buttons.btn-group.inline(style="margin-left: 10px;")
+                      i.fa.fa-check-circle.fa-3x.btn-accept-pending-user(value=pendingUser.userId.toString() name=pendingUser.username style="color: #46be8a; margin-right: 5px;")
+                      i.fa.fa-times-circle.fa-3x.btn-block-pending-user(value=pendingUser.userId.toString() name=pendingUser.username style="color: #f05f40;")
+                    
+                each blockedUser in user.blockedUsers
+                  .user.blockedUser(id='user-' + blockedUser.userId value=blockedUser.userId.toString() name=blockedUser.username)
+                    .avatar
+                      img(src='images/defaults/blocked_user.png')
+                    .name #{blockedUser.username}
+                    .mood Utente bloccato    
+                    
+              .search-users.tab-pane#search(role="search")
+                input.form-control#txtSearchUsers(type="text" placeholder="Username")
+                #search-list
+                
+              .groups.tab-pane#groups(role="groups") 
+                button.btn.btn-primary#btnCreateGroup(style='margin-bottom: 20px;') Crea un nuovo gruppo
+                each group in user.groups
+                  .user.group(id='user-' + group.groupId value=group.groupId.toString() name=group.groupName)
+                    .avatar
+                      img(src=picture_path+group.groupId)
+                    .name #{group.groupName}
+                    .mood Gruppo  
+                
+      .col-sm-9.col-xs-12.chat(style='overflow-y: scroll; outline: none;', tabindex='5001')
+        .col-inside-lg.decor-default(style='background-color: rgba(255,255,255,0.5);')
+          .chat-body
+            h6 Chat
+            div#conversation
+            div(style="clear: both;")
+      
+    .row.row-broken            
+      .col-sm-9.col-sm-offset-3.col-xs-12.chat.out-chat(style='overflow: hidden; outline: none;' tabindex='5001')
+        .col-inside-lg    
+          .chat-body.chat.input.out-chat
+            .answer-add
+              input#txtMsg(type="text" placeholder='Seleziona un contatto' disabled='true')
+              span.answer-btn.answer-btn-1#btnAttachments
+              span.answer-btn.answer-btn-2#btnSend
+    div#bottomSpace       
+  link(href='/stylesheets/chat.css' rel='stylesheet')
+  link(href='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.css' rel='stylesheet')
+  link(href='https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css' rel='stylesheet')
+  script(src='https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js')
+  script(src='https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.2/toastr.min.js')
+  script(src='https://cdn.socket.io/socket.io-1.4.5.js')
+  script(src='/javascripts/uuid.js')
+  script(src='/javascripts/diorama_socket.js')
+  script(src='/javascripts/chat_socket.js')
+  script(src='/javascripts/chat_mobile.js')
+  script(src='/javascripts/diorama_ajax_options.js')
+  script(src='/javascripts/chat.js')
+  script.
+    myId="#{user._id}";

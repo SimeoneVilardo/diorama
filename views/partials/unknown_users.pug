@@ -1,0 +1,5 @@
+each user in users
+    .user.unknown-user(id='unknown-user' + user._id value=user._id.toString() name=user.username)
+      .avatar
+        img(src='images/defaults/unknown_user.png' alt='Immagine di profilo')
+      .name(style='line-height: 40px;') #{user.username}

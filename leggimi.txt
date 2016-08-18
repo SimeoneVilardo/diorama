@@ -1,0 +1,14 @@
+Avviare lo script bin/www per accendere il server.
+Esiste già la configurazione "Start Diorama" in Cloud9.
+Non serve avviare il server di MongoDB perchè è esterno.
+
+Credenziali Diorama:
+1) username: admin      password: admin
+2) username: user       password: user
+
+Credenziali MongoDB:
+host: ds025180.mlab.com
+porta: 25180
+username: admin 
+password: d9020C4d01c14152958B2f01C90c4Fc5
+database: diorama

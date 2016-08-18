@@ -1,0 +1,8 @@
+.container-pending-user(id='pending-user-' + pendingUser.userId style="display: table;")
+    .user.pending-user(id='user-' + pendingUser.userId name=pendingUser.username value=pendingUser.userId.toString() style="display: table-cell;")
+        .avatar
+            img(src='images/defaults/unknown_user.png')
+        label #{pendingUser.username}
+    .buttons.btn-group.inline(style="margin-left: 10px;")
+        i.fa.fa-check-circle.fa-3x.btn-accept-pending-user(value=pendingUser.userId.toString() name=pendingUser.username style="color: #46be8a; margin-right: 5px;")
+        i.fa.fa-times-circle.fa-3x.btn-block-pending-user(value=pendingUser.userId.toString() name=pendingUser.username style="color: #f05f40;")

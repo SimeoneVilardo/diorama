@@ -1,0 +1,37 @@
+body {
+    background: url('../images/backgrounds/management.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+}
+
+li a {
+    color: #ffffff;
+}
+
+th, td {
+    color: #ffffff;
+}
+
+.black-text{
+    color: #000000;
+}
+
+.table-diorama-striped > tbody > tr:nth-child(even) > td, .table-diorama-striped > tbody > tr:nth-child(even) > th {
+   background-color: rgba(255,255,255, 0.2);
+}
+
+.glass {
+   background-color: rgba(255,255,255, 0.3) !important;
+   color: white !important;
+}
+
+.transparent {
+   background-color: transparent;
+}
+
+.lbl-convalida{
+    color: white;
+    margin-right: 15px; 
+}

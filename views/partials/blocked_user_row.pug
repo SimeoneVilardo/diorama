@@ -1,0 +1,9 @@
+tr(id='tr-' + blockedUser.userId)
+    td
+        img.img-responsive.img-circle.img-blockedUser(src='images/defaults/unknown_user.png' style="height:40px; width:40px;")
+    td= blockedUser.username
+    td #{blockedUser.creationDate.toLocaleString()}
+    td
+        button.btn.btn-warning.btn-remove-blocked-user(value=blockedUser.userId.toString()) Rimuovi
+    td
+        button.btn.btn-success.btn-unblock-blocked-user(value=blockedUser.userId.toString()) Sblocca

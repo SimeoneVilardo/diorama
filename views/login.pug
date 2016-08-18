@@ -1,0 +1,50 @@
+extends layout
+
+block content
+  .top-content
+    .inner-bg
+      .container
+        .row
+          .col-sm-8.col-sm-offset-2.text
+            h1
+              strong Accedi al sito
+            .description
+              p
+                | Accedi a Diorama per iniziare subito a comunicare
+                | con i tuoi amici
+        .row
+          .col-sm-6.col-sm-offset-3.form-box.animated.flipInX
+            .form-top
+              .form-top-left
+                h3 Login
+                p Inserisci il tuo username e la tua password
+              .form-top-right
+                i.fa.fa-lock
+            .form-bottom
+              .login-form#login-form
+                .form-group
+                  label.sr-only(for='form-username') Username
+                  .input-group
+                    input#form-username.form-username.form-control(type='text' name='form-username' placeholder='Username')
+                    span.input-group-btn
+                      a.btn.btn-diorama.btn-link-2(href='/request-recover-username' tabindex='-1' style='margin:0px;')
+                        i.fa.fa-question-circle-o
+                .form-group
+                  label.sr-only(for='form-password') Password
+                  .input-group
+                    input#form-password.form-password.form-control(type='password' name='form-password' placeholder='Password')
+                    span.input-group-btn
+                      a.btn.btn-diorama.btn-link-2(href='/request-reset-password' tabindex='-1' style='margin:0px;')
+                        i.fa.fa-question-circle-o
+                button.btn.btn-diorama.btn-primary#btnLogin Accedi
+        .row
+          .col-sm-6.col-sm-offset-3.social-login
+            h3 ...oppure registrati ora:
+            .social-login-buttons
+              a.btn.btn-diorama.btn-link-2(href='/signup')
+                i.fa.fa-mouse-pointer
+                |  Registrati
+  link(rel='stylesheet' href='stylesheets/login.css')
+  script(src='javascripts/login.js' + '?_=' + new Date().getTime())    
+  //script(src='javascripts/login.js')
+                  

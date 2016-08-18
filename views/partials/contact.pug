@@ -1,0 +1,12 @@
+.user.contact(id='user-' + contact.userId value=contact.userId.toString() name=contact.username)
+    .avatar
+        img(src=picture_path+contact.userId)
+        if contact.online
+            .status.online
+        else  
+            .status.offline
+    .name #{contact.username}
+    if contact.online
+        .mood Online
+    else
+        .mood Offline

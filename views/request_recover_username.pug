@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  .top-content
+    .inner-bg
+      .container
+        .row
+          .col-sm-8.col-sm-offset-2.text
+            h1
+              strong Recupero username
+            .description
+              p
+                | Se non ricordi il tuo username puoi recuperarlo fornendo
+                | l'indirizzo email con il quale sei registrato
+        .row
+          .col-sm-6.col-sm-offset-3.form-box.animated.flipInX
+            .form-top
+              .form-top-left
+                h3 Recupero username
+                p Inserisci il tuo indirizzo email o il tuo cellulare
+              .form-top-right
+                i.fa.fa-question-circle
+            .form-bottom
+              .request_recover_username-form#request_recover_username-form
+                .form-group
+                  label.sr-only(for='form-mail') Username o Cellulare
+                  input#form-mail.form-mail.form-control(type='email' name='form-mail' placeholder='Indirizzo email o Cellulare')
+                button.btn.btn-diorama.btn-primary#btnSendMail Recupera username
+        .row
+          .col-sm-6.col-sm-offset-3.social-login
+            h3 ...oppure registrati ora:
+            .social-login-buttons
+              a.btn.btn-diorama.btn-link-2(href='/signup')
+                i.fa.fa-mouse-pointer
+                |  Registrati
+  link(rel='stylesheet' href='stylesheets/login.css')
+  script(src='javascripts/request_recover_username.js')
+                  

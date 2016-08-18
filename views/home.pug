@@ -1,0 +1,84 @@
+extends layout
+
+block content
+  header
+    .header-content
+      .header-content-inner
+        h1.wow.jello(data-wow-delay='.1s') Diorama
+        hr
+        p
+          | Diorama è un servizio di chat semplice e veloce che può essere implementato dove vuoi grazie alle sue API!
+        a.btn.btn-primary.btn-xl.page-scroll(href='/about') Scopri di più
+  section.bg-primary
+    .container
+      .row
+        .col-lg-8.col-lg-offset-2.text-center
+          h2.section-heading Tutto quello che serve
+          hr.light
+          p.text-faded
+            | Diorama implementa tutte le funzioni di cui hai bisogno: chat private, gruppi, invio di allegati (foto, video, documenti...) ed immagini di profilo. Sono inoltre disponibili moltissime API facili da implementare! 
+          a.btn.btn-default.btn-xl.wow.wobble(href='/signup') Registrati
+  section
+    .container
+      .row
+        .col-lg-12.text-center
+          h2.section-heading Funzionalità
+          hr.primary
+    .container
+      .row
+        .col-lg-3.col-md-6.text-center
+          .service-box
+            i.fa.fa-4x.fa-bolt.wow.bounceIn.text-primary
+            h3 Chat rapida
+            p.text-muted Cerca un utente e sei già pronto per chattare.
+        .col-lg-3.col-md-6.text-center
+          .service-box
+            i.fa.fa-4x.fa-users.wow.bounceIn.text-primary(data-wow-delay='.1s')
+            h3 Gruppi
+            p.text-muted Crea i tuoi gruppi per restare in contatto con più persone.
+        .col-lg-3.col-md-6.text-center
+          .service-box
+            i.fa.fa-4x.fa-paper-plane.wow.bounceIn.text-primary(data-wow-delay='.2s')
+            h3 Invia tutto
+            p.text-muted Puoi inviare qualunque tipo di file.
+        .col-lg-3.col-md-6.text-center
+          .service-box
+            i.fa.fa-4x.fa-cogs.wow.bounceIn.text-primary(data-wow-delay='.3s')
+            h3 API
+            p.text-muted Integra le API in qualunque servizio.
+  aside.bg-dark
+    .container.text-center
+      .call-to-action
+        h2 Prova le API
+        a.btn.btn-default.btn-xl.wow.tada(href='https://chrome.google.com/webstore/detail/postman/fhbjgbiflinjbdggehcddcbncdddomop/related') Client RESTful
+  section#contact
+    .container
+      .row
+        .col-lg-12.text-center
+          h2.section-heading Contattaci
+          h3.section-heading Siamo sempre pronti ad ascoltarti
+      .row
+        .col-lg-12
+          form#contactForm(name='sentMessage', novalidate='')
+            .row
+              .col-md-6
+                .form-group
+                  input#name.form-control(type='text' placeholder='Il tuo nome *' required='' data-validation-required-message='Inserisci il tuo nome')
+                  p.help-block.text-danger
+                .form-group
+                  input#email.form-control(type='email' placeholder='La tua email *' required='' data-validation-required-message='Inserisci il tuo indirizzo email' aria-invalid='false')
+                  p.help-block.text-danger
+                .form-group
+                  input#phone.form-control(type='tel' placeholder='Il tuo telefono')
+                  p.help-block.text-danger
+              .col-md-6
+                .form-group
+                  textarea#message.form-control(placeholder='Il tuo messaggio *' required='' data-validation-required-message='Inserisci un messaggio')
+                  p.help-block.text-danger
+              .clearfix
+              .col-lg-12.text-center
+                #success
+                button.btn.btn-xl Invia
+  script(src='javascripts/home.js')
+  script.
+    var validationCompleted = '#{validationCompleted}';

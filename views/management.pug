@@ -1,0 +1,138 @@
+extends layout
+
+block content
+    .container-fluid(style="margin-top: 70px;")
+        #accordion.panel-group
+        .panel.panel-default.transparent
+            .panel-heading.glass
+                h4.panel-title
+                    a(data-toggle='collapse', data-parent='#accordion', href='#collapse1')
+                        | Gestione contatti
+            #collapse1.panel-collapse.collapse.in
+                .panel-body
+                    ul.nav.nav-tabs
+                      li.active
+                        a(href='#tabContacts' data-toggle="tab") Contatti
+                      li
+                        a(href='#tabPendingUsers' data-toggle="tab") Utenti in attesa
+                      li
+                        a(href='#tabBlockedUsers' data-toggle="tab") Utenti bloccati
+                      li
+                        a(href='#tabGroups' data-toggle="tab") Gruppi
+                        
+                        
+                    #tab-content.tab-content
+                        #tabContacts.tab-pane.fade.in.active
+                            table.table.table-diorama-striped
+                                thead
+                                    tr
+                                        th Foto
+                                        th Username
+                                        th Data
+                                        th &nbsp;
+                                        th &nbsp;
+                                tbody#tbodyContacts
+                                    each contact in contacts
+                                        tr(id='tr-' + contact.userId)
+                                            td
+                                                img.img-responsive.img-circle.img-contact(src=picture_path + contact.userId alt="Immagine di profilo" style="height:40px; width:40px;")
+                                            td= contact.username
+                                            td #{contact.creationDate.toLocaleString()}
+                                            td
+                                                button.btn.btn-warning.btn-remove-contact(value=contact.userId.toString()) Rimuovi
+                                            td
+                                                button.btn.btn-danger.btn-block-contact(value=contact.userId.toString()) Blocca
+                        #tabPendingUsers.tab-pane.fade
+                            table.table.table-diorama-striped
+                                thead
+                                    tr
+                                        th Foto
+                                        th Username
+                                        th Data
+                                        th &nbsp;
+                                        th &nbsp;
+                                        th &nbsp;
+                                tbody#tbodyPendingUsers
+                                    each pendingUser in pendingUsers
+                                        tr(id='tr-' + pendingUser.userId)
+                                            td
+                                                img.img-responsive.img-circle.img-pendingUser(src='images/defaults/unknown_user.png' style="height:40px; width:40px;")
+                                            td= pendingUser.username
+                                            td #{pendingUser.creationDate.toLocaleString()}
+                                            td
+                                                button.btn.btn-warning.btn-remove-pending-user(value=pendingUser.userId.toString()) Rimuovi
+                                            td
+                                                button.btn.btn-danger.btn-block-pending-user(value=pendingUser.userId.toString()) Blocca
+                                            td    
+                                                button.btn.btn-success.btn-accept-pending-user(value=pendingUser.userId.toString()) Accetta
+                        #tabBlockedUsers.tab-pane.fade
+                            table.table.table-diorama-striped
+                                thead
+                                    tr
+                                        th Foto
+                                        th Username
+                                        th Data
+                                        th &nbsp;
+                                        th &nbsp;
+                                tbody#tbodyBlockedUsers
+                                    each blockedUser in blockedUsers
+                                        tr(id='tr-' + blockedUser.userId)
+                                            td
+                                                img.img-responsive.img-circle.img-blockedUser(src='images/defaults/unknown_user.png' style="height:40px; width:40px;")
+                                            td= blockedUser.username
+                                            td #{blockedUser.creationDate.toLocaleString()}
+                                            td
+                                                button.btn.btn-warning.btn-remove-blocked-user(value=blockedUser.userId.toString()) Rimuovi
+                                            td
+                                                button.btn.btn-success.btn-unblock-blocked-user(value=blockedUser.userId.toString()) Sblocca
+                        #tabGroups.tab-pane.fade
+                            table.table.table-diorama-striped
+                                thead
+                                    tr
+                                        th Foto
+                                        th Nome gruppo
+                                        th Data
+                                        th &nbsp;
+                                        th &nbsp;
+                                tbody
+                                    each group in groups
+                                        tr(id='tr-' + group.groupId)
+                                            td
+                                                img.img-responsive.img-circle.img-group(src='images/defaults/unknown_user.png' style="height:40px; width:40px;")
+                                            td= group.groupName
+                                            td #{group.creationDate.toLocaleString()}
+                                            td
+                                            if group.admin
+                                                td
+                                                    button.btn.btn-info.btn-edit-group(value=group.groupId.toString()) Modifica
+                                                td
+                                                    button.btn.btn-danger.btn-delete-group(value=group.groupId.toString()) Elimina 
+                                            else
+                                                td
+                                                    button.btn.btn-success.btn-info-group(value=group.groupId.toString()) Informazioni
+                                                td
+                                                    button.btn.btn-warning.btn-leave-group(value=group.groupId.toString()) Abbandona  
+        .panel.panel-default.transparent
+            .panel-heading.glass
+                h4.panel-title
+                    a(data-toggle='collapse', data-parent='#accordion', href='#collapse2')
+                        | Gestione profilo
+            #collapse2.panel-collapse.collapse
+                .panel-body
+                    .form-group
+                        img.img-responsive#imgUserPicture(src='/images/uploads/users_pictures/' + user.id height="80" width="80")                        
+                        input(type='file' id='userPictureInput' name='userImage' accept='image/*' style='display: none;')     
+                        button.btn.btn-primary#btnUploadUserImage Upload
+                    .form-group
+                        label.lbl-convalida(for='form-convalida') Tipo Comunicazioni:
+                        if user.comunication == 'mail'
+                            input#form-convalida.form-convalida(type='checkbox' data-toggle='toggle' data-width="128" data-height="32" data-off="<i class='fa fa-envelope'></i> Email" data-on="<i class='fa fa-phone'></i> Cellulare" data-onstyle='info' data-offstyle='success')
+                        else    
+                            input#form-convalida.form-convalida(type='checkbox' checked='' data-toggle='toggle' data-width="128" data-height="32" data-off="<i class='fa fa-envelope'></i> Email" data-on="<i class='fa fa-phone'></i> Cellulare" data-onstyle='info' data-offstyle='success')
+    link(href='stylesheets/management.css' rel='stylesheet')  
+    link(href='https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css' rel='stylesheet')
+    script(src='https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js')
+    script(src='https://cdn.socket.io/socket.io-1.4.5.js')
+    script(src='javascripts/diorama_socket.js')
+    script(src='javascripts/diorama_ajax_options.js')
+    script(src='javascripts/management.js')
