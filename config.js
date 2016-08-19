@@ -18,7 +18,7 @@ config.messages.mail_validation = 'Per convalidare il tuo account devi cliccare 
 config.security.jwt_secret = '***';
 config.security.auth_cookie = 'bearerToken';
 
-config.mongodb.connection_string = 'mongodb://admin:***'@ds025180.mlab.com:25180/diorama';
+config.mongodb.connection_string = 'mongodb://admin:***@ds025180.mlab.com:25180/diorama';
 
 config.path.global_site_root = 'https://diorama-simeonevilardo.c9users.io';
 config.path.relative_validation = 'validate-phone';
@@ -32,8 +32,8 @@ config.path.attachments = 'protected/uploads/attachments/';
 config.smtp.host = 'smtp.sendgrid.net';
 config.smtp.port = 587;
 config.smtp.sender_name = 'Diorama';
-config.smtp.username = '***'';
-config.smtp.password = '***'';
+config.smtp.username = '***';
+config.smtp.password = '***';
 
 config.sms.host = 'api.comilio.it';
 config.sms.http_port = 80;
@@ -42,8 +42,8 @@ config.sms.message_type = 'SmartPro';
 config.sms.sender = 'Diorama';
 config.sms.send_api = '/rest/v1/message';
 config.sms.method = 'POST';
-config.sms.username = '***'';
-config.sms.password = '***'';
+config.sms.username = '***';
+config.sms.password = '***';
 config.sms.content_type = 'application/json;charset=utf-8';
 config.sms.debug = false;
 config.sms.debug_response = {
